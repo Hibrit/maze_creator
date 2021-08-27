@@ -31,8 +31,20 @@ class Grid:
 
         return neighbours
 
-    def get_all_neighbours(self, connections):
-        pass
+    def get_all_possible_connections(self, connections: list[tuple[Cell, Cell]]) -> list[tuple[Cell, Cell]]:
+        connection_points = []
+        possible_connections_list = []
+        for c1, c2 in connections:
+            if not c1 in connection_points:
+                connection_points.append(c1)
+            if not c2 in connection_points:
+                connection_points.append(c2)
+
+        for connection_point in connection_points:
+            neighbours = self.get_neighbours(connection_point)
+            for neighbour in neighbours:
+                possible_connections_list.append((connection_point, neighbour))
+        return possible_connections_list
 
 
 if __name__ == '__main__':
