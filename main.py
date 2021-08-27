@@ -1,10 +1,7 @@
 from settings import CELL_SIZE, COLUMNS, HEIGHT, LINE_TICKNESS, ROWS, WIDTH
 from grid import Grid
-from random import choice, seed
+from random import choice
 from PIL import Image, ImageDraw
-
-
-seed(1)
 
 
 def main():
@@ -26,11 +23,11 @@ def main():
         connections.append(connection)
         connection[1].connected = True
 
-    #! create the maze image
+    # * create the maze image
     im = Image.new('RGBA', (WIDTH, HEIGHT), (255, 255, 255, 255))
     draw = ImageDraw.Draw(im)
 
-    #! draw walls
+    # * draw walls
     grid.reset_connections()
     # for row in grid.grid:
     #     print(row)

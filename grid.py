@@ -23,7 +23,9 @@ class Grid:
 
             try:
                 current_cell = self.grid[n[1]][n[0]]
-                if not current_cell.connected and current_cell.connections < 3:
+                if current_cell.connections == 3:
+                    continue
+                if not current_cell.connected:
                     neighbours.append(current_cell)
             except IndexError:
                 pass
@@ -40,7 +42,7 @@ class Grid:
                 connection_points.append(c2)
 
         for connection_point in connection_points:
-            if connection_point.connections > 2:
+            if connection_point.connections == 3:
                 continue
             neighbours = self.get_neighbours(connection_point)
             for neighbour in neighbours:
